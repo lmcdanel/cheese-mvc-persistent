@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -22,8 +23,10 @@ public class CategoryController {
 
    @RequestMapping(value="")
    public String index(Model model) {
+
+       Iterable<Category> categories = categoryDao.findAll();
        model.addAttribute("title", "Categories");
-       model.addAttribute("categories", categoryDao.findAll());
+       model.addAttribute("categories", categories);
 
        return "category/index";
 
