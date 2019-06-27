@@ -23,7 +23,7 @@ public class Cheese {
     @Size(min=1, message = "Description must not be empty")
     private String description;
 
-    @ManyToMany(mappedBy = "cheeses")
+    @ManyToMany(mappedBy = "cheeses", cascade = CascadeType.ALL)
     private List<Menu> menus;
 
     @ManyToOne
